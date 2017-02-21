@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <id>pushNotification</id>
+    <name>Serveur Notification push</name>
+    <description>Plugin permanent d'envoyer de notification push vers nous appareils mobiles</description>
+    <icon>fa fa-comment-o</icon>
+    <licence>AGPL</licence>
+    <author>Halbout Michael</author>
+    <require>2.0</require>
+    <category>communication</category>
+</info>
+

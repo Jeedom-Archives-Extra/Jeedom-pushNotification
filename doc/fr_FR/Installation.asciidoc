@@ -1,0 +1,27 @@
+=== Installation des dépendance
+Pour facilité la mise en place des dépendance, jeedom vas gérer seul l'installation de motion.
+
+Dans la cadre réservé aux dépendances, vous allez avoir le statut de l'installation.
+Nous avons aussi la possibilité de consulté le log d'installation en temps réel.
+
+image::../images/Installation_dependance.jpg[]
+
+=== Configuration du plugin et de ses dépendance
+image::../images/openalpr_screenshot_configuration.jpg[]
+
+Les paramettre de configuration général sont
+
+* Création automatique de plaque inconnue: Permet a jeedom de créer une commande pour les plaque non reconue
+* Activer le Snapshot: Permet de déterminer si on veut des snapshot des détécton
+* Ajouter une camera : Permet d'ajouter une camera
+** Resau jeedom: Permet de déterminer sur quel jeedom l'analyse va se faire
+** Plugin source camera: determine la maniere de configurer une camera
+** Url de la Camera: adresse du flux de votre camera
+** Login de connexion a la Camera
+** Mots de pass de la Camera
+
+
+Nous pouvons voir le status de configuration et d'activation d'OpenALPR dans le cadre "Démon"
+
+image::../images/Status_Demon.jpg[]
+Si tous les voyant sont au vert, nous pouvons passée a la suite

@@ -1,0 +1,32 @@
+image::../images/openalpr_screenshot_groupes.jpg[]
+Le groupe "Plaques détectées inconnu" ce créer automatiquement des qu’une plaque a ete détécté et qu’elle n’existe pas sous jeedom.
+
+Pour créer votre groupe et comme partout sur jeedom vous avez le bouton "Ajouter" sur la gauche de votre écran.
+
+image::../images/openalpr_screenshot_configurationGroupe.jpg[]
+Le paramettrage du groupe ne change pas du standard Jeedom
+
+*   Nom du groupe: nomée le groupe
+
+*   Objet parent: Objet jeedom ou afficher le groupe
+
+*   Activer: Si l’on souhaite que notre groupe soit actif
+
+*   Visible: Si l’on souhaite que notre groupe soit visible
+
+*   Catégorie: la catégorie auquel notre groupe appartien
+Vous avez remarquez que le commande "Etat du groupe" et "Dernière détection" ont été automatiquement créer a la sauvegarde.
+
+*   Etat du groupe: Commande d’etat commun au groupe
+
+*   Dernière détection: affiche le nom de la derniere plaque détécté Nous pouvons donc ajouter a notre groupe la liste de plaque. Pour cela il suffit de cliquez sur le bouton "Ajouter un plaque d’immatriculation"
+
+*   Nom: Nom du vehicule
+
+*   Numero de la plaque: Numero de la plaque (sans les tirets)
+
+*   Historiser: Tres utiles si vous voulez visualiser sur le panel les entée
+
+*   Afficher: si vous voulez que la plaque apparaisse sur le dashbord
+
+*   Déplacer: ce bouton permet de déplacer une plaque d’un groupe a un autre

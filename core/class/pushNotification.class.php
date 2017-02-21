@@ -2,16 +2,16 @@
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class pushNotification extends eqLogic {
 	public function postInsert() {
-		self::AddCmd($this,'Notification push','push');
+		$this->AddCmd("Notification push","push");
 	}
-	public static function AddCmd($Equipement,$Name,$_logicalId) 	{
-		$Commande = $Equipement->getCmd(null,$_logicalId);
+	public function AddCmd($Name,$_logicalId) 	{
+		$Commande = $this->getCmd(null,$_logicalId);
 		if (!is_object($Commande)){
 			$Commande = new pushNotificationCmd();
 			$Commande->setId(null);
 			$Commande->setName($Name);
 			$Commande->setLogicalId($_logicalId);
-			$Commande->setEqLogic_id($Equipement->getId());
+			$Commande->setEqLogic_id($this->getId());
 			$Commande->setIsVisible(1);
 			$Commande->setType('action');
 			$Commande->setSubType('message');

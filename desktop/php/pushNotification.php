@@ -38,18 +38,24 @@ $eqLogics = eqLogic::byType('pushNotification');
 			if (count($eqLogics) == 0) {
 				echo "<br/><br/><br/><center><span style='color:#767676;font-size:1.2em;font-weight: bold;'>{{Vous n'avez pas encore d'appareil de configurer, cliquez sur Ajouter pour commencer}}</span></center>";
 			} else {
-			?>
-				<?php
 				foreach ($eqLogics as $eqLogic) {
-					echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
-					echo "<center>";
-					echo '<img src="plugins/pushNotification/doc/images/pushNotification_icon.png" height="105" width="95" />';
+					$opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
+				    	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;' . $opacity . '" >';
+				    	echo "<center>";
+					$file = 'plugins/pushNotification/doc/images/' . $eqLogic->getConfiguration('type_mobile') . '.png';
+				    	if (file_exists($file)) {
+						$path = 'plugins/pushNotification/doc/images/' . $eqLogic->getConfiguration('type_mobile') . '.png';
+						echo '<img src="'.$path.'" height="105" width="105" />';
+				    	} else {
+						$path = 'plugins/pushNotification/doc/images/pushNotification_icon.png';
+						echo '<img src="'.$path.'" height="105" width="105" />';
+				   	}
 					echo "</center>";
-					echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
-					echo '</div>';
+				    	echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
+				    	echo '</div>';
 				}
-				?>
-			<?php } ?>
+			} 
+			?>
 		</div>
     </div>
     <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
@@ -100,12 +106,12 @@ $eqLogics = eqLogic::byType('pushNotification');
 					<div class="form-group">
 						<label class="col-sm-2 control-label" ></label>
 						<div class="col-sm-9">
-							<select class="eqLogicAttr " data-l1key="configuration" data-l2key="Os" >
+							<select class="eqLogicAttr " data-l1key="configuration" data-l2key="type_mobile" >
 								<option value="windows">Windows Store and Windows Phone 8.1 (non-Silverlight)</option>
-								<option value="iOS">iOS</option>
-								<option value="Android">Android</option>
-								<option value="WindowsPhone">Windows Phone 8.0 and 8.1 Silverlight</option>
-								<option value="KindleFire">Kindle Fire</option>
+								<option value="ios">iOS</option>
+								<option value="android">Android</option>
+								<!--option value="WindowsPhone">Windows Phone 8.0 and 8.1 Silverlight</option>
+								<option value="KindleFire">Kindle Fire</option-->
 							</select>
 						</div>
 					</div>

@@ -13,7 +13,7 @@ function addCmdToTable(_cmd) {
 			.append($('<input type="hidden" class="cmdAttr" data-l1key="type" value="action" />'))
 			.append($('<input type="hidden" class="cmdAttr" data-l1key="subType" value="message" />'))
 			.append($('<span>')
-				.append($('<input type="checkbox" class="cmdAttr bootstrapSwitch" data-size="mini" data-label-text="{{Afficher}}" data-l1key="isVisible" checked/>'))));
+				.append($('<input type="checkbox" class="cmdAttr" data-size="mini" data-label-text="{{Afficher}}" data-l1key="isVisible" checked/>'))));
 	$('#table_cmd tbody').append(tr);
 	$('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
 	}

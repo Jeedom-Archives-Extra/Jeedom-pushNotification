@@ -23,7 +23,7 @@ class pushNotification extends eqLogic {
 class pushNotificationCmd extends cmd {
 	public function execute($_options = array()) {
 		$hub = new NotificationHub($this->getEqlogic()->getConfiguration('adress'), "JeedomPushNotification");
-		switch($this->getEqlogic()->getConfiguration('Os')){
+		switch($this->getEqlogic()->getConfiguration('type_mobile')){
 		//Windows Store and Windows Phone 8.1 (non-Silverlight)
 			case 'windows':
 				$toast = '<toast><visual><binding template="ToastText01"><text id="1">'.$_options['message'].'</text></binding></visual></toast>';

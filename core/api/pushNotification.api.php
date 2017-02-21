@@ -19,6 +19,7 @@ if ($jsonrpc->getMethod() == 'Iq') {
 	$mobile->setConfiguration('adress',$uri);
 	$mobile->setConfiguration('affect_user',$user->getId());
 	$mobile->setIsEnable(1);
+	$mobile->AddCmd("Notification push","push");
 	$mobile->save();
 	$jsonrpc->makeSuccess($mobile->getLogicalId());	
 }

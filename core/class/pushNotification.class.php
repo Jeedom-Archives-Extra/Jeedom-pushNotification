@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class pushNotification extends eqLogic {
-	public function postInsert() {
+	public function postSave() {
 		$this->AddCmd("Notification push","push");
 	}
 	public function AddCmd($Name,$_logicalId) 	{

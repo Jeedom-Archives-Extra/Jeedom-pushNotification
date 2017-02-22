@@ -59,7 +59,7 @@
 					$message = '{"data":{"msg":"'.$_options['message'].'!"}}';
 				break;
 			}
-			$this->Send($uri, $headers, $message)
+			$this->Send($uri, $headers, $message);
 		}
 		private function Send($uri, $headers, $message){
 			$request = curl_init();

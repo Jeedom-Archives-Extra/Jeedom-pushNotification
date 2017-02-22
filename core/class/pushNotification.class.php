@@ -42,6 +42,8 @@
 						  //<audio src="ms-winsoundevent:Notification.Reminder"/>
 						'</toast>';
 					$headers[] = 'X-WNS-Type: wns/toast';
+					//$headers[] = "X-Parse-Application-Id: " . $appId,
+                			//$headers[] = "X-Parse-REST-API-Key: " . $restKey,
 				break;
 				case 'ios':
 					$message = '{"aps":{"alert":"'.$_options['message'].'"}}';

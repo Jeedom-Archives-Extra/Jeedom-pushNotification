@@ -118,7 +118,6 @@ class NotificationHub {
 		$this->sendNotification($notification, "");
 	}
 	public function sendNotification($notification, $tagsOrTagExpression) {
-		echo $tagsOrTagExpression."<p>";
 		if (is_array($tagsOrTagExpression)) {
 			$tagExpression = implode(" || ", $tagsOrTagExpression);
 		} else {
@@ -126,7 +125,6 @@ class NotificationHub {
 		}
 		# build uri
 		$uri = $this->endpoint . $this->hubPath . "/messages" . NotificationHub::API_VERSION;
-		echo $uri."<p>";
 		$ch = curl_init($uri);
 		if (in_array($notification->format, ["template", "apple", "gcm"])) {
 			$contentType = "application/json";
@@ -164,8 +162,6 @@ class NotificationHub {
 		if ($info['http_code'] <> 201) {
 			throw new Exception('Error sending notificaiton: '. $info['http_code'] . ' msg: ' . $response);
 		}
-		//print_r($info);
-		//echo $response;
 	} 
 }
 ?>

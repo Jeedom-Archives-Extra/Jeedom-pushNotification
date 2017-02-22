@@ -26,37 +26,28 @@
 			switch($this->getEqlogic()->getConfiguration('type_mobile')){
 				//Windows Store and Windows Phone 8.1 (non-Silverlight)
 				case 'windows':
-					$message = '<toast>
-						<visual>
-							<binding template="ToastText01">
-								<text id="1">'.$_options['title'].'</text>
-								<text id="2">'.$_options['message'].'</text>
-							</binding>
-						</visual>
-					</toast>';
+					$message = '
+						<toast launch="app-defined-string">
+						  <visual>
+						    <binding template="ToastGeneric">
+						      <text>'.$_options["title"]'.</text>
+						      <text>'.$_options["message"]'.</text>
+						      './/<image placement="AppLogoOverride" src="oneAlarm.png" />
+						    '</binding>
+						  </visual>
+						  './/<actions>
+						    //<action content="check" arguments="check" imageUri="check.png" />
+						    //<action content="cancel" arguments="cancel" />
+						  //</actions>
+						  //<audio src="ms-winsoundevent:Notification.Reminder"/>
+						'</toast>';
 					$headers[] = 'X-WNS-Type: wns/toast';
 				break;
-				case 'iOS':
+				case 'ios':
 					$message = '{"aps":{"alert":"'.$_options['message'].'"}}';
 				break;
 				case 'Android':
 					$message = '{"data":{"message":"'.$_options['message'].'"}}';
-				break;
-				case 'WindowsPhone':
-					//Windows Phone 8.0 and 8.1 Silverlight
-					$message = '<?xml version="1.0" encoding="utf-8"?>' .
-						'<wp:Notification xmlns:wp="WPNotification">' .
-							'<wp:Toast>' .
-								'<wp:Text1>'.$_options['title'].'</wp:Text1>' .
-								'<wp:Text2>'.$_options['message'].'</wp:Text2>' .
-							'</wp:Toast> ' .
-						'</wp:Notification>';
-					$headers[] = 'X-WindowsPhone-Target : toast';
-					$headers[] = 'X-NotificationClass : 2';
-				break;
-				case 'KindleFire':
-					//Kindle Fire
-					$message = '{"data":{"msg":"'.$_options['message'].'!"}}';
 				break;
 			}
 			$this->Send($uri, $headers, $message);

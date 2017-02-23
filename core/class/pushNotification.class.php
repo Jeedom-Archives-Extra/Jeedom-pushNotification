@@ -30,8 +30,8 @@
 						<toast launch="app-defined-string">
 						  <visual>
 						    <binding template="ToastGeneric">
-						      <text>'.$_options["title"]'.</text>
-						      <text>'.$_options["message"]'.</text>
+						      <text>'.$_options["title"].'</text>
+						      <text>'.$_options["message"].'</text>
 						      './/<image placement="AppLogoOverride" src="oneAlarm.png" />
 						    '</binding>
 						  </visual>

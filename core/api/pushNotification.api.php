@@ -23,14 +23,14 @@ if ($jsonrpc->getMethod() == 'Iq') {
 		$Equipement->setObject_id(null);
 		$Equipement->setIsEnable(1);
 		$Equipement->setIsVisible(1);
-		//$Equipement->AddCmd("Notification push","push");
 	}
 	$Equipement->setConfiguration('type_mobile',$platform);
 	$Equipement->setConfiguration('adress',$uri);
 	$Equipement->setConfiguration('affect_user',$user->getId());
 	$Equipement->save();
+	$Equipement->AddCmd("Notification push","push");
 	log::add('pushNotification','debug','Mise a jours de l\'Uri channel');
-	$jsonrpc->makeSuccess($mobile->getLogicalId());	
+	$jsonrpc->makeSuccess(Equipement->getLogicalId());	
 }
 
 

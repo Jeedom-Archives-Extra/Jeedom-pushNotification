@@ -12,8 +12,9 @@ if ($jsonrpc->getMethod() == 'Iq') {
 	$platform = $params['platform'];
 	$uri = $params['query'];
 	$user = user::byHash($params['apikey']);
-	$mobile = eqLogic::byId($params['id']);
-	if (!is_object($mobile)){
+        if (isset($params['id']) && $params['id']!=''){
+		$mobile = eqLogic::byId($params['id']);
+	if (!isset($mobile) && !is_object($mobile)){
 		$mobile = new eqLogic;
 		$mobile->setEqType_name('pushNotification');
 		$mobile->setName($platform.'-'.config::genKey(3));

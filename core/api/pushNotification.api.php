@@ -14,19 +14,21 @@ if ($jsonrpc->getMethod() == 'Iq') {
 	$uri = $params['query'];
 	$user = user::byHash($params['apikey']);
         if (isset($params['id']) && $params['id']!='')
-		$mobile = eqLogic::byId($params['id']);
-	if (!isset($mobile) && !is_object($mobile)){
+		$Equipement = eqLogic::byId($params['id']);
+	if (!isset($Equipement) && !is_object($Equipement)){
 		log::add('pushNotification','debug','Création d\'un nouvelle equipement');
-		$mobile = new eqLogic();
-		$mobile->setEqType_name('pushNotification');
-		$mobile->setName($platform.'-'.config::genKey(3));
+		$Equipement = new pushNotification();
+		$Equipement->setName($platform.'-'.config::genKey(3));
+		$Equipement->setEqType_name('pushNotification');
+		$Equipement->setObject_id(null);
+		$Equipement->setIsEnable(1);
+		$Equipement->setIsVisible(1);
+		$Equipement->AddCmd("Notification push","push");
 	}
-	$mobile->setConfiguration('type_mobile',$platform);
-	$mobile->setConfiguration('adress',$uri);
-	$mobile->setConfiguration('affect_user',$user->getId());
-	$mobile->setIsEnable(1);
-	$mobile->AddCmd("Notification push","push");
-	$mobile->save();
+	$Equipement->setConfiguration('type_mobile',$platform);
+	$Equipement->setConfiguration('adress',$uri);
+	$Equipement->setConfiguration('affect_user',$user->getId());
+	$Equipement->save();
 	log::add('pushNotification','debug','Mise a jours de l\'Uri channel');
 	$jsonrpc->makeSuccess($mobile->getLogicalId());	
 }

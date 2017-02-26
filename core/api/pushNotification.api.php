@@ -1,4 +1,4 @@
-
+()
 <?php
 header('Content-Type: application/json');
 
@@ -17,7 +17,7 @@ if ($jsonrpc->getMethod() == 'Iq') {
 		$mobile = eqLogic::byId($params['id']);
 	if (!isset($mobile) && !is_object($mobile)){
 		log::add('pushNotification','debug','Création d\'un nouvelle equipement');
-		$mobile = new eqLogic;
+		$mobile = new eqLogic();
 		$mobile->setEqType_name('pushNotification');
 		$mobile->setName($platform.'-'.config::genKey(3));
 	}

@@ -1,3 +1,4 @@
+
 <?php
 header('Content-Type: application/json');
 
@@ -12,9 +13,10 @@ if ($jsonrpc->getMethod() == 'Iq') {
 	$platform = $params['platform'];
 	$uri = $params['query'];
 	$user = user::byHash($params['apikey']);
-        if (isset($params['id']) && $params['id']!=''){
+        if (isset($params['id']) && $params['id']!='')
 		$mobile = eqLogic::byId($params['id']);
 	if (!isset($mobile) && !is_object($mobile)){
+		log::add('pushNotification','debug','Création d\'un nouvelle equipement');
 		$mobile = new eqLogic;
 		$mobile->setEqType_name('pushNotification');
 		$mobile->setName($platform.'-'.config::genKey(3));
@@ -25,6 +27,7 @@ if ($jsonrpc->getMethod() == 'Iq') {
 	$mobile->setIsEnable(1);
 	$mobile->AddCmd("Notification push","push");
 	$mobile->save();
+	log::add('pushNotification','debug','Mise a jours de l\'Uri channel');
 	$jsonrpc->makeSuccess($mobile->getLogicalId());	
 }
 

@@ -1,4 +1,4 @@
-()
+//()
 <?php
 header('Content-Type: application/json');
 
@@ -23,7 +23,7 @@ if ($jsonrpc->getMethod() == 'Iq') {
 		$Equipement->setObject_id(null);
 		$Equipement->setIsEnable(1);
 		$Equipement->setIsVisible(1);
-		$Equipement->AddCmd("Notification push","push");
+		//$Equipement->AddCmd("Notification push","push");
 	}
 	$Equipement->setConfiguration('type_mobile',$platform);
 	$Equipement->setConfiguration('adress',$uri);

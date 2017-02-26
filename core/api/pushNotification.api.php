@@ -28,7 +28,7 @@ if ($jsonrpc->getMethod() == 'Iq') {
 	$Equipement->setConfiguration('adress',$uri);
 	$Equipement->setConfiguration('affect_user',$user->getId());
 	$Equipement->save();
-	$Equipement->AddCmd("Notification push","push");
+	//$Equipement->AddCmd("Notification push","push");
 	log::add('pushNotification','debug','Mise a jours de l\'Uri channel');
 	$jsonrpc->makeSuccess(Equipement->getLogicalId());	
 }

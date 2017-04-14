@@ -24,16 +24,16 @@
 	class pushNotificationCmd extends cmd {
 		private function GetToken() {
 			$cache = cache::byKey('pushNotification::token');
-			$token = json_decode($cache->getValue('[]'), true);
+			$token = json_decode($cache->getValue(null));
 			if($token !== null){     //init the WindowsNotification Class     
 				$Notifier = new WindowsNotification\WindowsNotificationClass();     
 				$Auth = $Notifier->AuthenticateService();     
 				if($Auth->response_status == 200){     
 					cache::set('pushNotification::token', json_encode($Auth), 0);
 				}
-			log::add('pushNotification','debug',json_encode($token));
 			}
-			return $token['access_token'];
+			log::add('pushNotification','debug',json_encode($token));
+			return $token;
 		}
 		public function execute($_options = array()) {
 			$uri=$this->getEqlogic()->getConfiguration('adress');

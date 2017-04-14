@@ -25,6 +25,7 @@
 		private function GetToken() {
 			$cache = cache::byKey('pushNotification::token');
 			$token = json_decode($cache->getValue('[]'), true);
+			log::add('pushNotification','debug',$cache->getValue('[]'));
 			if($token !== null){     //init the WindowsNotification Class     
 				$Notifier = new WindowsNotification\WindowsNotificationClass();     
 				$Auth = $Notifier->AuthenticateService();     

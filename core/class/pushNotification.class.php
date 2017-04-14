@@ -24,7 +24,7 @@
 	class pushNotificationCmd extends cmd {
 		private function GetToken() {
 			$cache = cache::byKey('pushNotification::token');
-			$token = json_decode($cache->getValue(null));
+			$token = json_decode($cache->getValue(null),true);
 			if($token !== null){     //init the WindowsNotification Class     
 				$Notifier = new WindowsNotification\WindowsNotificationClass();     
 				$Auth = $Notifier->AuthenticateService();     
@@ -40,10 +40,12 @@
 			switch($this->getEqlogic()->getConfiguration('type_mobile')){
 				//Windows Store and Windows Phone 8.1 (non-Silverlight)
 				case 'windows':
+             			   	log::add('pushNotification','debug','Récupération du token');
 					$token = $this->GetToken();
 					$Options = new WindowsNotification\WNSNotificationOptions();
 					$Options->SetAuthorization(new WindowsNotification\OAuthObject($token));
 					$Options->SetX_WNS_REQUESTFORSTATUS(WindowsNotification\X_WNS_RequestForStatus::Request);
+					log::add('pushNotification','debug','Demande de l\'autorisation d\'émetre une notification');
 					$Notifier = new WindowsNotification\WindowsNotificationClass($Options);
 					//Send a ToastText02 with custom sounds
 					//$Notifier->Send($uri,WindowsNotification\TemplateToast::ToastText02("HELLO!","I'm the message!!!!",WindowsNotification\TemplateToast::NotificationMail));

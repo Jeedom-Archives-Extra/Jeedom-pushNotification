@@ -48,6 +48,7 @@
 					//Send a ToastText02 with custom sounds
 					//$Notifier->Send($uri,WindowsNotification\TemplateToast::ToastText02("HELLO!","I'm the message!!!!",WindowsNotification\TemplateToast::NotificationMail));
 					//Send a ToastText01 to another channel
+					log::add('pushNotification','debug','Message a envoyé: '.$_options['message']);
 					$result=$Notifier->Send($uri,WindowsNotification\TemplateToast::ToastText01($_options['message']));
 					log::add('pushNotification','debug',json_encode($result));
 					//Send a ToastText01 to another channel with local sound

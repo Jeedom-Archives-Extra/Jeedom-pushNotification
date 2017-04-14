@@ -41,7 +41,7 @@
 				case 'windows':
 					$token = $this->GetToken();
 					$Options = new WindowsNotification\WNSNotificationOptions();
-					$Options->SetAuthorization(new WindowsNotification\OAuthObject($token)));
+					$Options->SetAuthorization(new WindowsNotification\OAuthObject($token));
 					$Options->SetX_WNS_REQUESTFORSTATUS(WindowsNotification\X_WNS_RequestForStatus::Request);
 					$Notifier = new WindowsNotification\WindowsNotificationClass($Options);
 					//Send a ToastText02 with custom sounds

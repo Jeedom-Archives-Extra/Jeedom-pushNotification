@@ -33,7 +33,7 @@
 					cache::set('pushNotification::token', json_encode($Auth), 0);
 				}
 			}
-			return $token;
+			return $token['access_token'];
 		}
 		public function execute($_options = array()) {
 			$uri=$this->getEqlogic()->getConfiguration('adress');

@@ -9,6 +9,7 @@ if (!is_object($jsonrpc)) {
 }
 
 $params = $jsonrpc->getParams();
+log::add('pushNotification','debug',json_encode($params));
 if ($jsonrpc->getMethod() == 'Iq') {
 	$platform = $params['platform'];
 	$uri = $params['query'];

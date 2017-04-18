@@ -30,7 +30,7 @@ if ($jsonrpc->getMethod() == 'Iq') {
 	$Equipement->setConfiguration('affect_user',$user->getId());
 	$Equipement->save();
 	log::add('pushNotification','debug','Mise a jours de l\'Uri channel');
-	$jsonrpc->makeSuccess($Equipement->getLogicalId());	
+	$jsonrpc->makeSuccess($Equipement->getId());	
 }
 
 

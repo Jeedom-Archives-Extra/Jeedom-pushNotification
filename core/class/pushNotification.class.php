@@ -36,6 +36,19 @@
 			return $token;
 		}
 		public function execute($_options = array()) {
+			if ($_options === null) {
+				throw new Exception(__('[Mail] Les options de la fonction ne peuvent etre null', __FILE__));
+			}
+
+			if ($_options['message'] == '' && $_options['title'] == '') {
+				throw new Exception(__('[Mail] Le message et le sujet ne peuvent être vide', __FILE__));
+				return false;
+			}
+
+			if ($_options['title'] == '') {
+				$_options['title'] = __('[Jeedom] - Notification', __FILE__);
+			}
+
 			$uri=$this->getEqlogic()->getConfiguration('adress');
 			switch($this->getEqlogic()->getConfiguration('type_mobile')){
 				//Windows Store and Windows Phone 8.1 (non-Silverlight)
@@ -46,15 +59,15 @@
 					$Options->SetAuthorization(new WindowsNotification\OAuthObject($token));
 					$Options->SetX_WNS_REQUESTFORSTATUS(WindowsNotification\X_WNS_RequestForStatus::Request);
 					log::add('pushNotification','debug','Demande de l\'autorisation d\'émetre une notification');
-					$Notifier = new WindowsNotification\WindowsNotificationClass($Options);
-					//Send a ToastText02 with custom sounds
-					//$Notifier->Send($uri,WindowsNotification\TemplateToast::ToastText02("HELLO!","I'm the message!!!!",WindowsNotification\TemplateToast::NotificationMail));
-					//Send a ToastText01 to another channel
-					log::add('pushNotification','debug','Message a envoyé: '.$_options['message']);
-					$result=$Notifier->Send($uri,WindowsNotification\TemplateToast::ToastText01($_options['message']));
+					$Notifier = new WindowsNotification\WindowsNotificationClass($Options);	
+					$toast=WindowsNotification\TemplateToast::ToastText02($_options['titre'],$_options['message']);
+					if (isset($_options['files']) && is_array($_options['files'])) {
+						foreach ($_options['files'] as $file) {
+							$toast=WindowsNotification\TemplateToast::ToastImageAndText02($_options['titre'],$_options['message'],$file);
+						}
+					}
+					$result=$Notifier->Send($uri,$toast);
 					log::add('pushNotification','debug',json_encode($result));
-					//Send a ToastText01 to another channel with local sound
-					//$Notifier->Send($uri,WindowsNotification\TemplateToast::ToastText01("HELLO!"),WindowsNotification\TemplateToast::CustomSound("<my local url>");
 				break;
 				case 'ios':
 				break;

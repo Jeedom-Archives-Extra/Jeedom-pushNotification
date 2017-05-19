@@ -1,0 +1,9 @@
+{
+	"id" : "pushNotification",
+	"name" : "Serveur Notification push",
+	"description" : "Plugin permanent d'envoyer de notification push vers nous appareils mobiles",
+	"licence" : "AGPL",
+	"author" : "Halbout Michael",
+	"require" : "3.0",
+	"category" : "communication",
+}

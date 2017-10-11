@@ -2,7 +2,7 @@
 <info>
     <id>pushNotification</id>
     <name>Serveur Notification push</name>
-    <description>Plugin permanent d'envoyer de notification push vers nous appareils mobiles</description>
+    <description>Plugin permettant d'envoyer des notifications push vers nos appareils mobiles</description>
     <icon>fa fa-comment-o</icon>
     <licence>AGPL</licence>
     <author>Halbout Michael</author>

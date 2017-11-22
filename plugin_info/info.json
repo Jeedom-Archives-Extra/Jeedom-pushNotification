@@ -5,5 +5,8 @@
 	"licence" : "AGPL",
 	"author" : "Halbout Michael",
 	"require" : "3.0",
-	"category" : "communication"
+	"category" : "communication",
+	"issue" : "https://github.com/mika-nt28/Jeedom-pushNotification/issues",
+ 	"changelog" : "https://github.com/mika-nt28/Jeedom-pushNotification/commits/master",
+ 	"documentation" : "https://jeedom.github.io/documentation/third_plugin/pushNotification/fr_FR/index.html"
 }
